@@ -1,14 +1,14 @@
-# Use a specific slim Python image
-FROM python:3.10-slim-bullseye
+# railway/Dockerfile
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Dependencies
+# install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Application code
-COPY app.py .
+# copy your tracker script
+COPY tracker.py .
 
-# Entrypoint
-CMD ["python", "app.py"]
+# tell Compose to run this by default
+CMD ["python", "tracker.py"]
